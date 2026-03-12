@@ -1,0 +1,15 @@
+{
+  "name": "galactic-spacefarer",
+  "version": "1.0.0",
+  "description": "Welcome to your new CAP project.",
+  "main": "index.js",
+  "scripts": {
+    "start": "cds watch"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@cap-js/sqlite": "^2.2.0",
+    "@sap/cds": "^9.8.2"
+  }
+}

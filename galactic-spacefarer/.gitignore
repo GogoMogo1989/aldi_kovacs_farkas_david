@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# CAP build / generated
+gen/
+_out/
+dist/
+target/
+
+# local databases
+*.db
+*.sqlite
+
+# local/private CAP config
+.cdsrc-private.json
+default-*.json
+connection.properties
+
+# environment / logs
+.env
+.env.*
+*.log
+
+# editor / OS
+.vscode/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,4 @@
+ID,firstName,lastName,email,originPlanet,stardustCollection,wormholeNavigationSkill,spacesuitColor,department_ID,position_ID
+99999999-9999-9999-9999-999999999991,Luke,Skywalker,luke@galactic.space,Planet X,150,8,Orange,11111111-1111-1111-1111-111111111111,aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+99999999-9999-9999-9999-999999999992,Leia,Organa,leia@galactic.space,Planet X,220,9,White,33333333-3333-3333-3333-333333333333,cccccccc-cccc-cccc-cccc-cccccccccccc
+99999999-9999-9999-9999-999999999993,Han,Solo,han@galactic.space,Planet Y,120,7,Brown,22222222-2222-2222-2222-222222222222,bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb

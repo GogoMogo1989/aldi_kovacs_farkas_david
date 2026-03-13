@@ -1,8 +1,15 @@
 using { galactic as db } from '../db/schema';
 
 @requires: 'authenticated-user'
+@cds.query.limit.default: 20
 service SpacefarerService {
+
+  @restrict: [
+    { grant: 'READ',   to: 'authenticated-user', where: (originPlanet = $user.planet) },
+    { grant: 'CREATE', to: 'authenticated-user' },
+    { grant: 'UPDATE', to: 'authenticated-user', where: (originPlanet = $user.planet) },
+    { grant: 'DELETE', to: 'authenticated-user', where: (originPlanet = $user.planet) }
+  ]
   entity Spacefarers as projection on db.Spacefarers;
-  entity Departments as projection on db.Departments;
-  entity Positions as projection on db.Positions;
+
 }

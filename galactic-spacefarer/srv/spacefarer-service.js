@@ -10,20 +10,17 @@ module.exports = cds.service.impl(function () {
     if (
       data.stardustCollection == null ||
       !Number.isInteger(data.stardustCollection) ||
-      data.stardustCollection < 0
+      data.stardustCollection <= 0
     ) {
-      req.reject(400, "stardustCollection must be a non-negative integer");
+      req.reject(400, "stardustCollection must be a positive integer");
     }
 
     if (
       data.wormholeNavigationSkill == null ||
       !Number.isInteger(data.wormholeNavigationSkill) ||
-      data.wormholeNavigationSkill < 0
+      data.wormholeNavigationSkill <= 0
     ) {
-      req.reject(
-        400,
-        "wormholeNavigationSkill must be an non-negative integer",
-      );
+      req.reject(400, "wormholeNavigationSkill must be a positive integer");
     }
   };
 

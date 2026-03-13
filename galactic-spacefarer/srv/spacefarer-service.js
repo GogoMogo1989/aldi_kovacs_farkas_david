@@ -4,18 +4,11 @@ const sendMail = require("./sendMail");
 module.exports = cds.service.impl(function () {
   const { Spacefarers } = this.entities;
 
-  this.before("CREATE", Spacefarers, (req) => {
+  const validateSpacefarer = (req) => {
     const data = req.data;
 
-    if (data.stardustCollection == null) {
-      data.stardustCollection = 0;
-    }
-
-    if (data.wormholeNavigationSkill == null) {
-      data.wormholeNavigationSkill = 1;
-    }
-
     if (
+      data.stardustCollection == null ||
       !Number.isInteger(data.stardustCollection) ||
       data.stardustCollection < 0
     ) {
@@ -23,16 +16,23 @@ module.exports = cds.service.impl(function () {
     }
 
     if (
+      data.wormholeNavigationSkill == null ||
       !Number.isInteger(data.wormholeNavigationSkill) ||
-      data.wormholeNavigationSkill < 1 ||
-      data.wormholeNavigationSkill > 10
+      data.wormholeNavigationSkill < 0
     ) {
       req.reject(
         400,
-        "wormholeNavigationSkill must be an integer between 1 and 10",
+        "wormholeNavigationSkill must be an non-negative integer",
       );
     }
+  };
+
+  this.before("NEW", Spacefarers.drafts, (req) => {
+    req.data.originPlanet = req.user.attr?.planet;
   });
+
+  this.before("CREATE", Spacefarers, validateSpacefarer);
+  this.before("UPDATE", Spacefarers, validateSpacefarer);
 
   this.after("CREATE", Spacefarers, async (created) => {
     try {

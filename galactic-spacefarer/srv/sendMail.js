@@ -22,11 +22,10 @@ const sendMail = async ({ to, subject, text, html }) => {
       html,
     });
 
-    console.log("E-mail sikeresen elküldve:", info.response);
+    console.log("Email sent successfully:", info.response);
     return info;
   } catch (error) {
-    console.error("Hiba az e-mail küldésekor:", error);
-    throw error;
+    console.error("Error while sending email:", error);
   }
 };
 

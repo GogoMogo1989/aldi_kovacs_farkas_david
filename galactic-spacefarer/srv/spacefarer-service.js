@@ -43,7 +43,7 @@ module.exports = cds.service.impl(function () {
         html: `<p>Hello <b>${created.firstName} ${created.lastName}</b>, welcome to the Galactic Spacefarer program!</p>`,
       });
     } catch (err) {
-      console.error("Email küldés sikertelen:", err.message);
+      console.error("Email sending failed:", err.message);
     }
   });
 });

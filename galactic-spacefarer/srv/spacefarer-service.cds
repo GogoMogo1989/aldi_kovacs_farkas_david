@@ -10,6 +10,7 @@ service SpacefarerService {
     { grant: 'UPDATE', to: 'authenticated-user', where: (originPlanet = $user.planet) },
     { grant: 'DELETE', to: 'authenticated-user', where: (originPlanet = $user.planet) }
   ]
+  @odata.draft.enabled
   entity Spacefarers as projection on db.Spacefarers;
 
 }

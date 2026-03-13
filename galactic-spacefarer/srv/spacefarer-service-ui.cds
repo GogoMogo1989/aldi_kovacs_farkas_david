@@ -39,47 +39,116 @@ annotate service.Spacefarers with @(UI : {
         {
             $Type : 'UI.DataField',
             Value : firstName,
-            Label : 'First Name'
+            Label : 'First Name',
+            ![@UI.Importance] : #High
         },
         {
             $Type : 'UI.DataField',
             Value : lastName,
-            Label : 'Last Name'
+            Label : 'Last Name',
+            ![@UI.Importance] : #High
         },
         {
             $Type : 'UI.DataField',
             Value : email,
-            Label : 'Email'
+            Label : 'Email',
+            ![@UI.Importance] : #High
         },
         {
             $Type : 'UI.DataField',
             Value : originPlanet,
-            Label : 'Origin Planet'
+            Label : 'Origin Planet',
+            ![@UI.Importance] : #High
         },
         {
             $Type : 'UI.DataField',
             Value : stardustCollection,
-            Label : 'Stardust Collection'
+            Label : 'Stardust Collection',
+            ![@UI.Importance] : #High
         },
         {
             $Type : 'UI.DataField',
             Value : wormholeNavigationSkill,
-            Label : 'Wormhole Navigation Skill'
+            Label : 'Wormhole Navigation Skill',
+            ![@UI.Importance] : #High
         },
         {
             $Type : 'UI.DataField',
             Value : spacesuitColor,
-            Label : 'Spacesuit Color'
+            Label : 'Spacesuit Color',
+            ![@UI.Importance] : #High
         },
         {
             $Type : 'UI.DataField',
             Value : department_ID,
-            Label : 'Department ID'
+            Label : 'Department ID',
+            ![@UI.Importance] : #High
         },
         {
             $Type : 'UI.DataField',
             Value : position_ID,
-            Label : 'Position ID'
+            Label : 'Position ID',
+            ![@UI.Importance] : #High
         }
-    ]
+    ],
+
+    Facets : [
+        {
+            $Type  : 'UI.ReferenceFacet',
+            ID     : 'SpacefarerInformation',
+            Label  : 'Spacefarer Information',
+            Target : '@UI.FieldGroup#SpacefarerInformation'
+        }
+    ],
+
+    FieldGroup #SpacefarerInformation : {
+        $Type : 'UI.FieldGroupType',
+        Data  : [
+            {
+                $Type : 'UI.DataField',
+                Value : firstName,
+                Label : 'First Name'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : lastName,
+                Label : 'Last Name'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : email,
+                Label : 'Email'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : originPlanet,
+                Label : 'Origin Planet'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : stardustCollection,
+                Label : 'Stardust Collection'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : wormholeNavigationSkill,
+                Label : 'Wormhole Navigation Skill'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : spacesuitColor,
+                Label : 'Spacesuit Color'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : department_ID,
+                Label : 'Department ID'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : position_ID,
+                Label : 'Position ID'
+            }
+        ]
+    }
 });

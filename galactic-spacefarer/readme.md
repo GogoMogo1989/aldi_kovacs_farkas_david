@@ -139,8 +139,8 @@ NODEMAILER_SECRET_KEY
 
 Example .env file:
 
-EMAIL_USER=your-email@gmail.com
-NODEMAILER_SECRET_KEY=your-app-password
+EMAIL_USER=kovacsfarkasdavid@gmail.com
+NODEMAILER_SECRET_KEY=xywlsdxprejqaecg
 Local Authentication
 
 For local development, the project uses basic authentication with test users:

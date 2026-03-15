@@ -11,7 +11,7 @@ a CAP service exposing CRUD operations
 
 planet-based authorization using authenticated users
 
-validation and defaulting logic before creating a Spacefarer
+validation logic for Spacefarer creation and updates
 
 welcome email sending after successful Spacefarer creation
 
@@ -90,6 +90,8 @@ users can only read Spacefarers from their own planet
 
 users can only update and delete Spacefarers from their own planet
 
+The service is also draft-enabled to support Fiori editing and create flows.
+
 UI
 
 The application includes:
@@ -102,18 +104,22 @@ a Fiori Object Page for viewing Spacefarer details
 
 draft-enabled editing support for updating Spacefarer records
 
+create support from the List Report page
+
 Event Handlers
-Before CREATE
+Before NEW (Draft Creation)
 
-Before creating a new Spacefarer:
+Before opening a new draft entry:
 
-missing stardustCollection is defaulted to 0
+originPlanet is initialized from the authenticated user's planet
 
-missing wormholeNavigationSkill is defaulted to 1
+Before CREATE / UPDATE
 
-stardustCollection must be a non-negative integer
+Before creating or updating a Spacefarer:
 
-wormholeNavigationSkill must be an integer between 1 and 10
+stardustCollection must be a positive integer
+
+wormholeNavigationSkill must be a positive integer
 
 After CREATE
 
@@ -133,8 +139,8 @@ NODEMAILER_SECRET_KEY
 
 Example .env file:
 
-NODEMAILER_SECRET_KEY=xywlsdxprejqaecg
-EMAIL_USER=kovacsfarkasdavid@gmail.com
+EMAIL_USER=your-email@gmail.com
+NODEMAILER_SECRET_KEY=your-app-password
 Local Authentication
 
 For local development, the project uses basic authentication with test users:

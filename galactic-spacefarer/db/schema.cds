@@ -3,13 +3,11 @@ namespace galactic;
 entity Departments {
   key ID   : UUID;
   name     : String(100);
-  planet   : String(50);
 }
 
 entity Positions {
   key ID   : UUID;
   title    : String(100);
-  level    : String(30);
 }
 
 entity Spacefarers {

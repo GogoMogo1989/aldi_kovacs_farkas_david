@@ -36,6 +36,13 @@
             "attr": {
               "planet": "Planet Y"
             }
+          },
+          "admin": {
+            "password": "admin",
+            "roles": [
+              "authenticated-user",
+              "admin"
+            ]
           }
         }
       }

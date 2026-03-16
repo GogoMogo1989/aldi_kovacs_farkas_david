@@ -1,14 +1,29 @@
 using SpacefarerService as service from './spacefarer-service';
 
+annotate service.Spacefarers with {
+    firstName               @title : 'First Name';
+    lastName                @title : 'Last Name';
+    email                   @title : 'Email';
+    originPlanet            @title : 'Origin Planet';
+    stardustCollection      @title : 'Stardust Collection';
+    wormholeNavigationSkill @title : 'Wormhole Navigation Skill';
+    spacesuitColor          @title : 'Spacesuit Color';
+    departmentName          @title : 'Department';
+    positionTitle           @title : 'Position';
+
+    department_ID @UI.HiddenFilter;
+    position_ID   @UI.HiddenFilter;
+};
+
 annotate service.Spacefarers with @(UI : {
     HeaderInfo : {
         TypeName       : 'Spacefarer',
         TypeNamePlural : 'Spacefarers',
-        Title          : {
+        Title : {
             $Type : 'UI.DataField',
             Value : firstName
         },
-        Description    : {
+        Description : {
             $Type : 'UI.DataField',
             Value : lastName
         }
@@ -17,79 +32,19 @@ annotate service.Spacefarers with @(UI : {
     SelectionFields : [
         firstName,
         lastName,
-        email,
-        originPlanet,
-        stardustCollection,
-        wormholeNavigationSkill,
-        spacesuitColor,
-        department_ID,
-        position_ID
+        originPlanet
     ],
 
-    PresentationVariant : {
-        SortOrder : [
-            {
-                Property   : stardustCollection,
-                Descending : true
-            }
-        ]
-    },
-
     LineItem : [
-        {
-            $Type : 'UI.DataField',
-            Value : firstName,
-            Label : 'First Name',
-            ![@UI.Importance] : #High
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : lastName,
-            Label : 'Last Name',
-            ![@UI.Importance] : #High
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : email,
-            Label : 'Email',
-            ![@UI.Importance] : #High
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : originPlanet,
-            Label : 'Origin Planet',
-            ![@UI.Importance] : #High
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : stardustCollection,
-            Label : 'Stardust Collection',
-            ![@UI.Importance] : #High
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : wormholeNavigationSkill,
-            Label : 'Wormhole Navigation Skill',
-            ![@UI.Importance] : #High
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : spacesuitColor,
-            Label : 'Spacesuit Color',
-            ![@UI.Importance] : #High
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : department_ID,
-            Label : 'Department ID',
-            ![@UI.Importance] : #High
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : position_ID,
-            Label : 'Position ID',
-            ![@UI.Importance] : #High
-        }
+        { $Type : 'UI.DataField', Value : firstName,               ![@UI.Importance] : #High },
+        { $Type : 'UI.DataField', Value : lastName,                ![@UI.Importance] : #High },
+        { $Type : 'UI.DataField', Value : email,                   ![@UI.Importance] : #High },
+        { $Type : 'UI.DataField', Value : originPlanet,            ![@UI.Importance] : #High },
+        { $Type : 'UI.DataField', Value : stardustCollection,      ![@UI.Importance] : #High },
+        { $Type : 'UI.DataField', Value : wormholeNavigationSkill, ![@UI.Importance] : #High },
+        { $Type : 'UI.DataField', Value : spacesuitColor,          ![@UI.Importance] : #High },
+        { $Type : 'UI.DataField', Value : departmentName,          ![@UI.Importance] : #High },
+        { $Type : 'UI.DataField', Value : positionTitle,           ![@UI.Importance] : #High }
     ],
 
     Facets : [
@@ -104,51 +59,16 @@ annotate service.Spacefarers with @(UI : {
     FieldGroup #SpacefarerInformation : {
         $Type : 'UI.FieldGroupType',
         Data  : [
-            {
-                $Type : 'UI.DataField',
-                Value : firstName,
-                Label : 'First Name'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : lastName,
-                Label : 'Last Name'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : email,
-                Label : 'Email'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : originPlanet,
-                Label : 'Origin Planet'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : stardustCollection,
-                Label : 'Stardust Collection'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : wormholeNavigationSkill,
-                Label : 'Wormhole Navigation Skill'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : spacesuitColor,
-                Label : 'Spacesuit Color'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : department_ID,
-                Label : 'Department ID'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : position_ID,
-                Label : 'Position ID'
-            }
+            { $Type : 'UI.DataField', Value : firstName },
+            { $Type : 'UI.DataField', Value : lastName },
+            { $Type : 'UI.DataField', Value : email },
+            { $Type : 'UI.DataField', Value : originPlanet },
+            { $Type : 'UI.DataField', Value : stardustCollection },
+            { $Type : 'UI.DataField', Value : wormholeNavigationSkill },
+            { $Type : 'UI.DataField', Value : spacesuitColor },
+            { $Type : 'UI.DataField', Value : departmentName },
+            { $Type : 'UI.DataField', Value : positionTitle }
         ]
     }
+
 });

@@ -11,26 +11,39 @@ annotate service.Spacefarers with {
     departmentName          @title : 'Department';
     positionTitle           @title : 'Position';
 
-    department_ID @UI.HiddenFilter;
-    position_ID   @UI.HiddenFilter;
+    originPlanet @(
+        Common.ValueListWithFixedValues : true,
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Planets',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : originPlanet,
+                    ValueListProperty : 'code'
+                }
+            ]
+        }
+    );
 };
 
 annotate service.Spacefarers with @(
-Capabilities: {
-   NavigationRestrictions : {
-       $Type : 'Capabilities.NavigationRestrictionsType',
-       RestrictedProperties : [
-           {
-               $Type : 'Capabilities.NavigationPropertyRestriction',
-               NavigationProperty : DraftAdministrativeData,
-               FilterRestrictions : {
-                   $Type : 'Capabilities.FilterRestrictionsType',
-                   Filterable : false,
-               },
-           },
-       ],
-   },
-});
+    Capabilities: {
+        NavigationRestrictions : {
+            $Type : 'Capabilities.NavigationRestrictionsType',
+            RestrictedProperties : [
+                {
+                    $Type : 'Capabilities.NavigationPropertyRestriction',
+                    NavigationProperty : DraftAdministrativeData,
+                    FilterRestrictions : {
+                        $Type : 'Capabilities.FilterRestrictionsType',
+                        Filterable : false
+                    }
+                }
+            ]
+        }
+    }
+);
 
 annotate service.Spacefarers with @(UI : {
     HeaderInfo : {
@@ -87,5 +100,4 @@ annotate service.Spacefarers with @(UI : {
             { $Type : 'UI.DataField', Value : positionTitle }
         ]
     }
-
 });

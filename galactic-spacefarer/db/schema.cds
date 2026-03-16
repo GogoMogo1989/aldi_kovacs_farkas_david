@@ -1,5 +1,10 @@
 namespace galactic;
 
+entity Planets {
+  key code : String(50);
+  name     : String(100);
+}
+
 entity Departments {
   key ID   : UUID;
   name     : String(100);

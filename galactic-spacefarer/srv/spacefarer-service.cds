@@ -1,7 +1,8 @@
 using { galactic as db } from '../db/schema';
 
 @requires: 'authenticated-user'
-@cds.query.limit.default: 5
+@cds.query.limit.default: 10
+@cds.query.limit.max: 10
 service SpacefarerService {
 
   @restrict: [
@@ -27,4 +28,5 @@ service SpacefarerService {
 
   entity Departments as projection on db.Departments;
   entity Positions   as projection on db.Positions;
+  entity Planets as projection on db.Planets;
 }

@@ -4,7 +4,8 @@
   "description": "Welcome to your new CAP project.",
   "main": "index.js",
   "scripts": {
-    "start": "cds watch"
+    "start": "cds watch",
+    "watch-spacefarers": "cds watch --open spacefarers/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "license": "ISC",
   "type": "commonjs",
@@ -47,5 +48,14 @@
         }
       }
     }
-  }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "devDependencies": {
+    "cds-plugin-ui5": "^0.13.0"
+  },
+  "sapux": [
+    "app/spacefarers"
+  ]
 }

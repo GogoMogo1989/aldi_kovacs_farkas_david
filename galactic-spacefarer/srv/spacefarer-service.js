@@ -8,24 +8,40 @@ module.exports = cds.service.impl(function () {
     const data = req.data;
 
     if (
-      data.stardustCollection == null ||
-      !Number.isInteger(data.stardustCollection) ||
-      data.stardustCollection <= 0
+      data.stardustCollection != null &&
+      (!Number.isInteger(data.stardustCollection) ||
+        data.stardustCollection <= 0)
     ) {
       req.reject(400, "stardustCollection must be a positive integer");
     }
 
     if (
-      data.wormholeNavigationSkill == null ||
-      !Number.isInteger(data.wormholeNavigationSkill) ||
-      data.wormholeNavigationSkill <= 0
+      data.wormholeNavigationSkill != null &&
+      (!Number.isInteger(data.wormholeNavigationSkill) ||
+        data.wormholeNavigationSkill <= 0)
     ) {
       req.reject(400, "wormholeNavigationSkill must be a positive integer");
+    }
+
+    if (req.user.is("admin")) {
+      return;
+    }
+
+    if (
+      data.originPlanet != null &&
+      data.originPlanet !== req.user.attr?.planet
+    ) {
+      req.reject(
+        403,
+        "You can only create or update spacefarers on your own planet",
+      );
     }
   };
 
   this.before("NEW", Spacefarers.drafts, (req) => {
-    req.data.originPlanet = req.user.attr?.planet;
+    if (!req.user.is("admin")) {
+      req.data.originPlanet = req.user.attr?.planet;
+    }
   });
 
   this.before("CREATE", Spacefarers, validateSpacefarer);

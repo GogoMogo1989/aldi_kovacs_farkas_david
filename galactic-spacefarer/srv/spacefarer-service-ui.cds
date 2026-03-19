@@ -1,6 +1,8 @@
 using SpacefarerService as service from './spacefarer-service';
 
 annotate service.Spacefarers with {
+
+    // Mezők címei a Fiori UI-ban
     firstName               @title : 'First Name';
     lastName                @title : 'Last Name';
     email                   @title : 'Email';
@@ -13,6 +15,7 @@ annotate service.Spacefarers with {
     department_ID           @title : 'Department';
     position_ID             @title : 'Position';
 
+    // Origin planet mezőhöz dropdown / value help beállítás
     originPlanet @(
         Common.ValueListWithFixedValues : true,
         Common.ValueList : {
@@ -28,6 +31,7 @@ annotate service.Spacefarers with {
         }
     );
 
+    // Department mezőhöz value help beállítás
     department_ID @(
         Common.Text : departmentName,
         Common.TextArrangement : #TextOnly,
@@ -44,6 +48,7 @@ annotate service.Spacefarers with {
         }
     );
 
+    // Position mezőhöz value help beállítás
     position_ID @(
         Common.Text : positionTitle,
         Common.TextArrangement : #TextOnly,
@@ -61,6 +66,7 @@ annotate service.Spacefarers with {
     );
 };
 
+// DraftAdministrativeData navigációs filterezésének tiltás
 annotate service.Spacefarers with @(
     Capabilities: {
         NavigationRestrictions : {
@@ -79,8 +85,9 @@ annotate service.Spacefarers with @(
     }
 );
 
-
 annotate service.Spacefarers with @(UI : {
+
+    // Object Page fejléc beállításai
     HeaderInfo : {
         TypeName       : 'Spacefarer',
         TypeNamePlural : 'Spacefarers',
@@ -94,15 +101,14 @@ annotate service.Spacefarers with @(UI : {
         }
     },
 
-   //Filter táblázat
+    // Filter táblázat mezői
     SelectionFields : [
         firstName,
         lastName,
         originPlanet
     ],
 
-    
-    //Táblázat oszlopai
+    // Táblázat oszlopai a List Report oldalon
     LineItem : [
         { $Type : 'UI.DataField', Value : firstName,               ![@UI.Importance] : #High },
         { $Type : 'UI.DataField', Value : lastName,                ![@UI.Importance] : #High },
@@ -115,6 +121,7 @@ annotate service.Spacefarers with @(UI : {
         { $Type : 'UI.DataField', Value : positionTitle,           ![@UI.Importance] : #High }
     ],
 
+    // Az Object Page szekciói
     Facets : [
         {
             $Type  : 'UI.ReferenceFacet',
@@ -124,6 +131,7 @@ annotate service.Spacefarers with @(UI : {
         }
     ],
 
+    // Az Object Page-en megjelenő mezők create / edit / display nézetben
     FieldGroup #SpacefarerInformation : {
         $Type : 'UI.FieldGroupType',
         Data  : [

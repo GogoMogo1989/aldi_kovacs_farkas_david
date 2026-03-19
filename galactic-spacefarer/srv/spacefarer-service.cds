@@ -22,11 +22,13 @@ service SpacefarerService {
     stardustCollection,
     wormholeNavigationSkill,
     spacesuitColor,
-    department.name  as departmentName,
-    position.title   as positionTitle
+    department.name as departmentName,
+    position.title  as positionTitle,
+    department.ID   as department_ID,
+    position.ID     as position_ID
   };
 
   entity Departments as projection on db.Departments;
   entity Positions   as projection on db.Positions;
-  entity Planets as projection on db.Planets;
+  entity Planets     as projection on db.Planets;
 }

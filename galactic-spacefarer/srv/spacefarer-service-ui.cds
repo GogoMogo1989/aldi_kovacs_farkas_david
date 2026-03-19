@@ -10,6 +10,8 @@ annotate service.Spacefarers with {
     spacesuitColor          @title : 'Spacesuit Color';
     departmentName          @title : 'Department';
     positionTitle           @title : 'Position';
+    department_ID           @title : 'Department';
+    position_ID             @title : 'Position';
 
     originPlanet @(
         Common.ValueListWithFixedValues : true,
@@ -21,6 +23,38 @@ annotate service.Spacefarers with {
                     $Type : 'Common.ValueListParameterInOut',
                     LocalDataProperty : originPlanet,
                     ValueListProperty : 'code'
+                }
+            ]
+        }
+    );
+
+    department_ID @(
+        Common.Text : departmentName,
+        Common.TextArrangement : #TextOnly,
+        Common.ValueListWithFixedValues : true,
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Departments',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'name'
+                }
+            ]
+        }
+    );
+
+    position_ID @(
+        Common.Text : positionTitle,
+        Common.TextArrangement : #TextOnly,
+        Common.ValueListWithFixedValues : true,
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Positions',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'title'
                 }
             ]
         }
@@ -45,6 +79,7 @@ annotate service.Spacefarers with @(
     }
 );
 
+
 annotate service.Spacefarers with @(UI : {
     HeaderInfo : {
         TypeName       : 'Spacefarer',
@@ -59,12 +94,15 @@ annotate service.Spacefarers with @(UI : {
         }
     },
 
+   //Filter táblázat
     SelectionFields : [
         firstName,
         lastName,
         originPlanet
     ],
 
+    
+    //Táblázat oszlopai
     LineItem : [
         { $Type : 'UI.DataField', Value : firstName,               ![@UI.Importance] : #High },
         { $Type : 'UI.DataField', Value : lastName,                ![@UI.Importance] : #High },
@@ -96,8 +134,8 @@ annotate service.Spacefarers with @(UI : {
             { $Type : 'UI.DataField', Value : stardustCollection },
             { $Type : 'UI.DataField', Value : wormholeNavigationSkill },
             { $Type : 'UI.DataField', Value : spacesuitColor },
-            { $Type : 'UI.DataField', Value : departmentName },
-            { $Type : 'UI.DataField', Value : positionTitle }
+            { $Type : 'UI.DataField', Value : department_ID },
+            { $Type : 'UI.DataField', Value : position_ID }
         ]
     }
 });
